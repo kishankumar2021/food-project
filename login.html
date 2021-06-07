@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>login</title>
+    <style>
+        body {
+            margin: 0%;
+            padding: 0%;
+            font-family: sans-serif;
+            background-image: url(https://images.unsplash.com/photo-1577546568088-eb32790be7ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2106&q=80);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .sign-up-form {
+            width: 400px;
+            box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+            background: #fff;
+            padding: 20px;
+            margin: 8% auto 0;
+            text-align: center;
+        }
+
+        .sign-up-form h1 {
+            color: #1c8adb;
+            margin-bottom: 30px;
+
+
+        }
+
+        .item {
+            border-radius: 15px;
+            padding: 10px;
+            margin: 10px 0;
+            width: 90%;
+            border-radius: 1px solid black;
+            outline: none;
+        }
+
+        button {
+            color: #fff;
+            width: 90%;
+            padding: 10px;
+            border-radius: 20px;
+            font-size: 15px;
+            margin: 10px 0;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .signup-btn {
+            background-color: #1c8abd;
+
+        }
+
+        a {
+            text-decoration: none;
+
+        }
+
+        hr {
+            margin-top: 20px;
+            width: 80%;
+        }
+
+        .or {
+            background: #fff;
+            width: 30px;
+            margin: -19px auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sign-up-form">
+        <h1>Sign In </h1>
+        <form id="singin">
+
+            <input type="email" class="item" id="email" placeholder="Email">
+
+            <input type="password" class="item" id="password" placeholder="Password">
+
+
+            <button type="button" class="signup-btn" onclick="singIn(event)">Sign in</button>
+
+            <hr>
+            <p class="or">OR</p>
+            <p>Don't Have an account? <a href="singUp.html">Sign up</a></p>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function singIn(e) {
+        e.preventDefault();
+        const form = document.getElementById('singin')
+
+        const email = form.email.value;
+        const password = form.password.value;
+
+      
+        const users = JSON.parse(localStorage.getItem('users'));
+        console.log(users);
+        var flag = false;
+        for (var i = 0; i < users.length; i++) {
+
+            if (users[i].email === email && users[i].password === password) {
+               
+
+                window.location.href = "menu.html";
+                flag = true;
+
+                break;
+            }
+            
+
+        if (!flag) {
+            alert("You password or id is invalid")
+        }
+
+
+
+    }
+}
+</script>

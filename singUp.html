@@ -1,0 +1,158 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>SinUp</title>
+    <style>
+        body {
+            margin: 0%;
+            padding: 0%;
+            font-family: sans-serif;
+            background-image: url(https://image.shutterstock.com/z/stock-photo-man-touching-a-signup-concept-on-a-touch-screen-with-his-finger-1135954052.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .sign-up-form {
+            width: 400px;
+            box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3),
+            10px -5px -10px;
+            background: rgb(30, 145, 30);
+            padding: 20px;
+            margin: 8% auto 0;
+            text-align: center;
+        }
+
+        .sign-up-form h1 {
+            color: #a412dd;
+            margin-bottom: 30px;
+
+
+        }
+
+        .item {
+            border-radius: 15px;
+            padding: 10px;
+            margin: 10px 0;
+            width: 90%;
+            border-radius: 1px solid black;
+            outline: none;
+        }
+
+        button {
+            color: white;
+            width: 85%;
+            padding: 10px;
+            border-radius: 20px;
+            font-size: 15px;
+            margin: 10px 0;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .signup-btn {
+            background-color: #1c8abd;
+
+        }
+
+        a {
+            text-decoration: none;
+
+        }
+
+        hr {
+            margin-top: 20px;
+            width: 80%;
+        }
+
+        .or {
+            background: #fff;
+            width: 30px;
+            margin: -19px auto;
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="sign-up-form">
+        <h1>Sign Up</h1>
+        <form id="singup">
+            <input type="text" class="item" id="name" placeholder="Name">
+            <input type="email" class="item" id="email" placeholder="Email">
+            <input type="number" class="item" id="mobile" placeholder="Mobile NO">
+            <input type="password" class="item" id="password" placeholder="Password">
+            <p><span><input type="checkbox"></span> agree to the terms of services</p>
+
+            <button type="button" class="signup-btn" onclick="singUp(event)">Sign up</button>
+
+            <hr>
+            <p class="or">OR</p>
+            <p>Do You Have an account? <a href="login.html">Sign in</a></p>
+
+        </form>
+    </div>
+
+
+    </form>
+</body>
+
+</html>
+
+<script>
+    function singUp(e) {
+        e.preventDefault();
+        var form = document.getElementById('singup');
+
+
+        if (form.name.value != "" && form.email.value != "" && form.mobile.value != "" && form.password.value != "") {
+            const name = form.name.value
+            const email = form.email.value
+            const mobile = form.mobile.value
+            const password = form.password.value
+
+
+            // creating a generic object for all the entries
+
+            let data = {
+                name,
+                email,
+                mobile,
+                password
+            }
+
+            let arr;
+
+
+            // //get the array if exists or create one
+
+            arr = localStorage.getItem('user');
+
+            if (arr == null) {
+                arr = [];
+
+            } else {
+                arr = JSON.parse(localStorage.getItem('user'))
+            }
+
+            arr.push(data)
+            //convert the array of objects to JSON so as to store in the localStorage
+            localStorage.setItem("user", JSON.stringify(arr));
+
+            alert("You have successfully SinUp! Go And Login!")
+
+
+
+        }
+        else {
+
+            alert("Please fill all the inputs!")
+        }
+
+
+    }
+</script>
